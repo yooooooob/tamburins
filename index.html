@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAMBURINS</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/index.html.css">
+    <!-- Link Swiper's CSS -->
+
+    <script src="lib/jquery-3.7.0.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        $(function () {
+            AOS.init();
+            let menuIconWrap = $('.mobile_menu');
+            let menuIcon = $('.mobile_menu span');
+
+            menuIconWrap.click(function () {
+                $(this).toggleClass('on');
+            });
+
+            let mobileBtn = $('.mobile_menu');
+            let mobileNav = $('.pc');
+
+            console.log(mobileNav.offset().left)
+            console.log(-$(window).width())
+
+            mobileNav.css({
+                'left': -$(window).width()
+            });
+
+            mobileBtn.click(function () {
+                if (mobileNav.offset().left == -$(window).width()) {
+                    $(this).addClass('on');
+                    mobileNav.animate({
+                        'left': '0'
+                    })
+
+                    //$('#wrap').addClass('on');
+
+                } else {
+                    $(this).removeClass('on');
+                    mobileNav.animate({
+                        'left': -$(window).width()
+                    });
+
+                    //$('#wrap').removeClass('on');
+                }
+            });
+
+            //로그인 팝업
+            $('.login_pop').click(function () {
+                $('.login').css({
+                    'display': 'flex'
+                });
+
+                $('body').addClass('on');
+            });
+
+            $('.menu_close').click(function () {
+                $('.login').css({
+                    'display': 'none'
+                });
+
+                $('body').removeClass('on');
+            });
+
+
+            //top pixed
+            let headerTop = $('header').offset().top
+            let cont01Top = $('.main_visual').offset().top
+
+            console.log($('.main_visual').offset().top)
+
+            $(window).scroll(function () {
+
+                if (headerTop < $(window).scrollTop()) {
+                    $('header').addClass('on')
+                } else {
+                    $('header').removeClass('on')
+                }
+                if (cont01Top < $(window).scrollTop()) {
+                    $('.talk_btn a').fadeIn().css({
+                        'display': 'block'
+                    });
+                    $('.talk_btn').fadeIn()
+                    $('.top').fadeIn();
+
+                } else {
+                    $('.top').fadeOut();
+                    $('.talk_btn').fadeOut();
+                }
+
+            });//window.scroll();
+
+
+            $('.top').click(function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 2000)
+
+            });//.top.click()
+
+            //main_swiper
+            var swiper = new Swiper(".mySwiper", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: true,
+
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            //2차 메뉴
+            $('.depth01 > a').click(function () {
+
+                if ($(this).next().css('display') == 'none') {
+                    $('.depth02').slideUp();
+                    $(this).next().slideDown();
+
+                } else {
+                    $(this).siblings().slideUp();
+                    $(this).css({
+                    })
+                }
+            });
+
+            //best
+            var swiper = new Swiper(".best_right", {
+                slidesPerView: 3,
+                spaceBetween: 15,
+
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: true,
+                },
+            });
+
+            $('.best .best_ctgry li').click(function () {
+                $('.best .best_ctgry li').removeClass('on');
+                $(this).addClass('on');
+
+                $('.best .list .best_right').removeClass('on');
+                $('.best .list .best_right').eq($(this).index()).addClass('on');
+            });
+
+
+
+            //secent
+            var swiper = new Swiper(".scent_slide", {
+                slidesPerView: 1,
+                loop: true,
+
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+        }); // jquery end
+
+    </script>
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header>
+            <div class="inner">
+                <h1>
+                    <a href="#">
+                        <img src="img/logo_wh.png" alt="logo">
+                    </a>
+                </h1>
+
+                <nav class="pc">
+
+                    <ul class="gnb">
+
+                        <li class="depth01">
+                            <a href="#">Brand</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">About</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Best&New</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">Best seller</a></li>
+                                <li><a href="#">New Collection</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Perfume</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">Perfume</a></li>
+                                <li><a href="#">Perfume Balm</a></li>
+                                <li><a href="#">Perfume Hand</a></li>
+                                <li><a href="#">Perfume Hand&Body</a></li>
+                                <li><a href="#">Perfume Soap</a> </li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Body</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">BodyWash</a></li>
+                                <li><a href="#">BodyLotion</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Tube Hand Cream</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">Tube Hand Cream</a></li>
+                                <li><a href="#">Chain Hand Cream</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Fragrance</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">Toilet Fragrance</a></li>
+                                <li><a href="#">Multi Fragrance</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Hand Sanitizer</a>
+                        </li><!-- .depth01 end -->
+
+                        <li class="depth01">
+                            <a href="#">Candle</a>
+
+                            <ul class="depth02">
+                                <li><a href="#">Olfactive Archive</a></li>
+                                <li><a href="#">Scents Object</a></li>
+                            </ul><!-- .depth02 end -->
+
+                        </li><!-- .depth01 end -->
+
+                    </ul><!-- .gnb end -->
+                </nav><!-- .pc end -->
+
+                <ul class="user">
+                    <li>
+                        <a href="#">
+                            <img src="img/icon/header_lang-50.png" alt="lang">
+                        </a>
+                    </li>
+
+                    <li class="login_pop">
+                        <a href="#">
+                            <img src="img/icon/header_사용자-32.png" alt="mypage">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <img src="img/icon/header_search-48.png" alt="search">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="img/icon/header_카트-48.png" alt="cart">
+                        </a>
+                    </li>
+
+                </ul><!-- .user end -->
+
+
+                <div class="mobile mobile_menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div><!-- .mobile mobile_menu" end -->
+            </div><!-- .inner end-->
+
+        </header>
+    </div> <!-- .wrap end -->
+
+    <main>
+        <section class="main_visual">
+            <!-- Swiper -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/main_visual_perfume_img.jpg" alt="JENNIE PERFUME">
+
+                        <div class="main_text">
+                            <div>
+                                <h2>퍼퓸 컬렉션</h2>
+                                <p>탬버린즈가 찾아낸 규정되지 않은 아름다운<br>
+                                    당신의 감각에 새로운 리듬을 부여합니다.</p>
+
+                                <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2094">VIEW MORE</a>
+                            </div>
+                        </div><!-- .main_text -->
+                    </div><!-- .swiper-slide end -->
+
+                    <div class="swiper-slide">
+                        <img src="img/main_visual_gift.png" alt="gift">
+
+                        <div class="main_text">
+                            <div>
+                                <h2>탬버린즈 GIFT</h2>
+                                <p>정성 가득한 선물,<br>
+                                    탬버린즈가 함께합니다.</p>
+
+                                <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2092"">VIEW MORE</a>
+                            </div>
+                        </div><!-- .main_text end -->
+                    </div><!-- .swiper-slide end -->
+
+                    <div class=" swiper-slide">
+                                    <img src="img/main_visual_toilet_02.jpg" alt="toilet">
+
+                                    <div class="main_text">
+                                        <div>
+                                            <h2>NEW 토일렛 프래그런스</h2>
+                                            <p>당신의 개인적인 공간을<br>
+                                                기분 좋은 향과 멋진 영감으로 채워 보세요.</p>
+
+                                            <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2097">VIEW
+                                                MORE</a>
+                                        </div>
+                                    </div><!-- .main_text end -->
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <img src="img/main_visual_body_03.jpg" alt="body">
+                                <div class="main_text">
+                                    <div>
+                                        <h2>퍼퓸드 핸드워시</h2>
+                                        <p>탬버린즈의 베스트 향을<br>
+                                            더욱 풍성하게 느낄 수 있는 핸드워시</p>
+
+                                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2050">VIEW
+                                            MORE</a>
+                                    </div>
+                                </div><!-- .main_text end -->
+                            </div><!-- .swiper-slide end -->
+
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+        </section>
+
+
+        <!-- ctgry start -->
+        <section class="ctgry">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+
+                <div class="title">
+                    <h3>category</h3>
+                </div><!-- .title end -->
+
+                <div class="list">
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2094">
+                            <img src="img/category_perfume_01.png" alt="perfume">
+
+                            <div class="text">
+                                <p>Perfume</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2092">
+                            <img src="img/category_body_02.png" alt="body">
+
+                            <div class="text">
+                                <p>Body</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2017">
+                            <img src="img/category_chain-hand_v2.png" alt="chain-hand">
+
+                            <div class="text">
+                                <p>Hand Cream</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2015">
+                            <img src="img/category_multi-fragrance.png" alt="fragrance">
+
+                            <div class="text">
+                                <p>Fragrance</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2040">
+                            <img src="img/category_sanitizer.png" alt="sanitizer">
+
+                            <div class="text">
+                                <p>Sanitizer</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2018">
+                            <img src="img/category_OAcandle.png" alt="candle">
+
+                            <div class="text">
+                                <p>Candle</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+            </div><!-- .inner end -->
+        </section><!-- .ctgry end -->
+
+
+        <!-- New Collection  -->
+        <section class="new">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+
+                <div class="title">
+                    <h3>New Collection</h3>
+                </div><!-- .title end -->
+
+                <div class="list_all">
+
+                    <div class="list">
+                        <div class="item">
+                            <div>
+                                <a href="https://www.tamburins.com/store/index.php?code=ex">
+                                    <img src="img/new_collection_hausdosan_tf01.jpg" alt="hausdosan_tf_">
+                                </a>
+                            </div>
+
+                            <div class="new_text">
+                                <h4>토일렛 프래그런스 컬렉션</h4> <!-- 폰트30 -->
+                                <h5>토일렛 에피소드는 방해받고 싶지 않은 공간과 순간에 대해 이야기합니다.<br>
+                                    감각적 향으로 표현된 새로운 화장실 에티켓을 경험해보세요.</h5><!-- 폰트20 -->
+                                <p>2023. 07. 29 - 2023. 08. 29</p>
+                                <span>서울 강남구 압구정로4 6길 50 하우스도산</span>
+                            </div><!-- .new_text end -->
+
+                        </div><!-- .item end_1 -->
+                    </div><!-- .list end -->
+
+                    <div class="list">
+                        <div class="item">
+
+                            <div class="new_text">
+                                <h4>하베스트 퍼퓸 비누 컬렉션</h4> <!-- 폰트30 -->
+                                <h5>HARVEST 컨셉의 한적한 시골 전시 공간입니다.<br>
+                                    다채로운 컬러의 농작물이 햇볕에 널어져 있는 장면과<br>
+                                    향으로 기억되는 심화된 비누 세계관을 경험해보세요.
+                                </h5><!-- 폰트20 -->
+                                <p>2023. 04. 28 - 2023. 05. 28</p>
+                                <span>서울 성동구 연무장5길 8</span>
+                            </div><!-- .new_text end -->
+
+                            <div>
+                                <a href="https://www.tamburins.com/store/index.php?code=ex">
+                                    <img src="img/new_collection__seongsu_soap01.jpg" alt="seongsu_soap">
+                                </a>
+                            </div>
+
+                        </div><!-- .item end_2 -->
+                    </div><!-- .list end -->
+
+                </div><!-- .list_all end -->
+            </div><!-- .inner end -->
+        </section><!-- .new end  -->
+
+
+        <!-- .gift start-->
+        <section class="gift">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+
+                <div class="title">
+                    <h3>Thanks Giving For You</h3>
+                    <p>마음을 전하는 따뜻한 선물</p>
+                </div><!-- .title end -->
+
+                <div class="btn_hover">
+                    <a href="https://www.tamburins.com/shop/list.php?ca_id=20&sub_ca_id=2092">
+                        <img src="img/main_visual_gift.png" alt="gift_banner">
+
+                        <div>
+                            VIEW MORE
+                        </div>
+                    </a>
+                </div><!-- .btn_hover end -->
+            </div><!-- .inner end -->
+        </section><!-- .gift -->
+
+
+        <!-- .best end -->
+        <section class="best">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+
+                <div class="best_left">
+                    <div class="title">
+                        <h3>Best Sellers</h3>
+                    </div><!-- .title end -->
+
+                    <ul class="best_ctgry on">
+                        <li class="on"># 퍼퓸</li>
+                        <li># 바디</li>
+                        <li># 핸드크림</li>
+                        <li># 손소독제</li>
+                        <li># 캔들</li>
+                    </ul><!-- best_ctgry -->
+                </div><!-- .best_left end -->
+
+                <div class="list">
+                    <!-- Swiper -->
+                    <div class="swiper best_right on">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_chamo_50ml.jpg" alt="chamo">
+                                        <img class="hover" src="img/bs_perfume_chamo_hover_50ml.jpg" alt="chamo상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>진득한 카모마일 | 부드러운 나무결 | 머스크</p>
+                                        <h5>퍼퓸 카모</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_berga_50ml.jpg" alt="berga">
+                                        <img class="hover" src="img/bs_perfume_berga_hover_50ml.jpg" alt="berga상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>지중해의 베르가못 | 쌉싸래한 청귤 | 샌달우드</p>
+                                        <h5>퍼퓸 버가샌달</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_thaw_50ml.jpg" alt="thaw">
+                                        <img class="hover" src="img/bs_perfume_thaw_hover_50ml.jpg" alt="thaw상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>따뜻한 공기 | 오렌지 껍질 | 머스크</p>
+                                        <h5>퍼퓸 쏘,선셋</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_suedePear_50ml_1.jpg" alt="suedePear">
+                                        <img class="hover" src="img/bs_perfume_suedePear_hover_50ml_4_v2.jpg"
+                                            alt="suedePear상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>시원한 배 | 스웨이드 | 쌉쌀한 갈바넘</p>
+                                        <h5>퍼퓸 스웨이드 페어</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_whiteDar_50ml.jpg" alt="whiteDar">
+                                        <img class="hover" src="img/bs_perfume_whiteDar_hover_50ml.jpg"
+                                            alt="whiteDar상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>화이트 샴페인 | 다즐링 티 | 크리미한 머스크</p>
+                                        <h5>퍼퓸 화이트다즐링</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_haysticks_50ml_1.jpg" alt="haysticks">
+                                        <img class="hover" src="img/bs_perfume_haysticks_hover_50ml_4_v2.jpg"
+                                            alt="haysticks상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>건초더미 | 짙은 향의 럼 | 패츌리</p>
+                                        <h5>퍼퓸 헤이스텍스</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_lale_50ml_1.jpg" alt="lale">
+                                        <img class="hover" src="img/bs_perfume_lale_hover_50ml_4_v2.jpg" alt="lale상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>이슬을 머금은 풋사과 | 화이트 튤립 | 샌달우드</p>
+                                        <h5>퍼퓸 라레</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_french_50ml_1.jpg" alt="french">
+                                        <img class="hover" src="img/bs_perfume_french_hover_50ml_4_v2.jpg"
+                                            alt="french상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>우디 스파이시 | 피어나는 안개 | 진한 녹음</p>
+                                        <h5>퍼퓸 프렌치니들</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_perfume_unknown_50ml.jpg" alt="unknown">
+                                        <img class="hover" src="img/bs_perfume_unknown_hover_50ml.jpg" alt="unknown상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>유칼립투스 | 라즈베리 | 그을린 나무</p>
+                                        <h5>퍼퓸 언노운오드</h5>
+
+                                        <div>
+                                            <strong>139,000원</strong>
+                                            <p>+ 3 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                        </div><!-- .wrapper end -->
+                    </div><!-- .best_퍼퓸 end -->
+
+
+                    <div class="swiper best_right">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_lotion_biga_470mL.jpg" alt="biga">
+                                        <img class="hover" src="img/bs_shwry_lotion_biga_hover_470mL_4.jpg"
+                                            alt="biga 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>씁쓸한 오렌지 | 시더우드 | 달콤한 리코라이스</p>
+                                        <h5>바디로션 BIGALICO</h5>
+
+                                        <div>
+                                            <strong>59,500원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_lotion_fog_470mL.jpg" alt="fog">
+                                        <img class="hover" src="img/bs_shwry_lotion_fog_hover_470mL_4.jpg"
+                                            alt="fog 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>물안개 낀 숲 | 젖은 나무 | 캐시미어 우드</p>
+                                        <h5>바디로션 FOG</h5>
+
+                                        <div>
+                                            <strong>59,500원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_lotion_nimbus_470mL.jpg" alt="nimbus">
+                                        <img class="hover" src="img/bs_shwry_lotion_nimbus_hover_470mL_4.jpg"
+                                            alt="nimbus">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>도넛피치 | 어린 코코넛의 풋내음 | 포근한 머스크</p>
+                                        <h5>바디로션 NIMBUS</h5>
+
+                                        <div>
+                                            <strong>59,500원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_wash_biga_470mL.jpg" alt="biga">
+                                        <img class="hover" src="img/bs_shwry_wash_biga_hover_470mL.jpg" alt="biga 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>씁쓸한 오렌지 | 시더우드 | 달콤한 리코라이스</p>
+                                        <h5>바디워시 BIGALICO</h5>
+
+                                        <div>
+                                            <strong>52,000원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_wash_fog_470mL.jpg" alt="fog">
+                                        <img class="hover" src="img/bs_shwry_wash_fog_hover_470mL_4.jpg" alt="fog상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>물안개 낀 숲 | 젖은 나무 | 캐시미어 우드</p>
+                                        <h5>바디샤워 FOG</h5>
+
+                                        <div>
+                                            <strong>52,000원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_wash_nimbus_470mL.jpg" alt="nimbus">
+                                        <img class="hover" src="img/bs_shwry_wash_nimbus_hover_470mL_4.jpg"
+                                            alt="nimbus상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>도넛피치 | 어린 코코넛의 풋내음 | 포근한 머스크</p>
+                                        <h5>바디샤워 NIMBUS</h5>
+
+                                        <div>
+                                            <strong>52,000원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shwry_wash_storm_470mL.jpg" alt="storm">
+                                        <img class="hover" src="img/bs_shwry_wash_storm_hover_470mL.jpg" alt="storm상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>풀내음 | 짙은 오렌지 | 베티버 뿌리의 쌉쌀함</p>
+                                        <h5>바디샤워 STORM</h5>
+
+                                        <div>
+                                            <strong>52,000원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+
+                        </div><!-- .wrapper end -->
+                    </div><!-- .best_바디 end -->
+
+                    <div class="swiper best_right">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shellX_30ml_berga.jpg" alt="biga">
+                                        <img class="hover" src="img/bs_shellX_30ml_bergaSandal_hover.jpg"
+                                            alt="biga 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>지중해의 베르가못 | 쌉싸래한 청귤 | 샌달우드</p>
+                                        <h5>퍼퓸 쉘 엑스 버가샌달</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shellX_30ml_chamo.jpg" alt="fog">
+                                        <img class="hover" src="img/bs_shellX_30ml_chamo_hover.jpg" alt="fog 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>진득한 카모마일 | 부드러운 나무결 | 머스크</p>
+                                        <h5>퍼퓸 쉘 엑스 카모</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shellX_30ml_lale.jpg" alt="nimbus">
+                                        <img class="hover" src="img/bs_shellX_30ml_lale_hover.jpg" alt="nimbus">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>이슬을 머금은 풋사과 | 화이트 튤립 | 샌달우드</p>
+                                        <h5>퍼퓸 쉘 엑스 라레</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_000_40mL.jpg" alt="biga">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="biga 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>샌달우드 | 패츌리 | 흙 내음</p>
+                                        <h5>000</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_blessed_40mL.jpg" alt="fog">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="fog상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>블랙베리 | 시트러스 | 프루티함</p>
+                                        <h5>BLESSED</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_fear_40mL.jpg" alt="nimbus">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="nimbus상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>단단한 흙과 뿌리 | 자몽 | 청량한 공기</p>
+                                        <h5>FEAR</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_fey9_40mL.jpg" alt="storm">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="nimbus상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>무화과나무 | 엠브레트 씨앗 | 달콤 씁쓸한</p>
+                                        <h5>FAY9</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_flow_40mL.jpg" alt="storm">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="nimbus상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>샌달우드 | 은은한 가죽 향 | 스파이시</p>
+                                        <h5>FLOW</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_shell_her_40mL.jpg" alt="storm">
+                                        <img class="hover" src="img/bs_shell_hover.jpg" alt="nimbus상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>삼나무 | 바이올렛 잎 | 시트러스</p>
+                                        <h5>HER</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 2 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+
+                        </div><!-- .wrapper end -->
+                    </div><!-- .best 핸드크림 end -->
+
+                    <div class="swiper best_right">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_sani_250ml_fey9.jpg" alt="fey9">
+                                        <img class="hover" src="img/bs_sani_250ml_fey9_hover.jpg" alt="fey9 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>무화과나무 | 엠브레트 씨앗 | 달콤 씁쓸한</p>
+                                        <h5>손 소독제 FEY9</h5>
+
+                                        <div>
+                                            <strong>32,000원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_sani_30ml_000_1.jpg" alt="000">
+                                        <img class="hover" src="img/bs_sani_hover_000.jpg" alt="000">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>샌달우드 | 패츌리 | 흙 내음</p>
+                                        <h5>손소독제 000</h5>
+
+                                        <div>
+                                            <strong>8,500원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_sani_30ml_712_1.jpg" alt="712">
+                                        <img class="hover" src="img/bs_sani_hover_712.jpg" alt="712">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>패츌리 | 쌉싸래한 풀 줄기 | 스모키함</p>
+                                        <h5>손 소독제 712</h5>
+
+                                        <div>
+                                            <strong>8,500원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_sani_30ml_7_1.jpg" alt="7">
+                                        <img class="hover" src="img/bs_sani_hover__7.jpg" alt="7 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>로즈우드 | 코코넛 향 | 우아함</p>
+                                        <h5>손 소독제 7</h5>
+
+                                        <div>
+                                            <strong>8,500원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+                        </div><!-- .wrapper end -->
+                    </div><!-- .best 손소독제 end -->
+
+                    <div class="swiper best_right">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_OAcandle_cocoon_40g_2.jpg" alt="cocoon">
+                                        <img class="hover" src="img/bs_OAcandle_cocoon_180g_hover.jpg" alt="cocoon">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>본능의 향 | 고귀한 머스크 | 성스러운 나무</p>
+                                        <h5>COCOON MUSK</h5>
+
+                                        <div>
+                                            <strong>28,900원</strong>
+                                            <p>+ 1 Size</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_OAcandle_mulberry_40g.jpg" alt="mulberry">
+                                        <img class="hover" src="img/bs_OAcandle_mulberry_180g_hover.jpg"
+                                            alt="mulberry 상품컷">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>회귀의 향 | 나무껍질의 눈물 | 내적 평온</p>
+                                        <h5>MULBERRY LEAVES</h5>
+
+                                        <div>
+                                            <strong>28,900원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div><!-- .swiper-slide end -->
+
+                            <div class="swiper-slide">
+                                <a href="#">
+                                    <figure>
+                                        <img class="nomal" src="img/bs_OAcandle_sounds_40g.jpg" alt="sounds">
+                                        <img class="hover" src="img/bs_OAcandle_sounds_180g_hover.jpg" alt="sounds">
+                                    </figure>
+
+                                    <div class="best_text">
+                                        <p>씁쓸한 프루티함 | 바람에 흔들리는 꽃의 향 | 고요함</p>
+                                        <h5>SOUNDS OF NIGHT</h5>
+
+                                        <div>
+                                            <strong>28,900원</strong>
+                                            <p>+ 2 Sizes</p>
+                                        </div>
+                                    </div><!-- .best_text end -->
+                                </a>
+                            </div>
+
+                        </div><!-- .wrapper end -->
+                    </div><!-- .best 캔들 end -->
+
+                    <!-- <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
+
+                    <div class="swiper-scrollbar"></div>
+
+
+                </div><!-- .list end -->
+
+
+            </div><!-- .inner -->
+
+        </section><!-- .best end -->
+
+
+        <!--scent start -->
+        <section class="scent">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                <div class="title">
+                    <h3>TAMBURINS SCENTS</h3>
+                </div><!-- .title end -->
+
+                <!-- Swiper -->
+                <div class="swiper scent_slide">
+
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/secent_floral_02.jpg" alt="floral">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/secent_musc_05.jpg" alt="floral">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/secent_wood_04.jpg" alt="floral">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <img src="img/secent_floral_01.jpg" alt="floral">
+                            </a>
+                        </div><!-- .swiper-slide end -->
+                    </div><!-- .swiper-wrapper end -->
+
+                    <a class="circle" href="#">
+                        <div class="bd"></div>
+                        <p class="scent_mood" style="display: block;">Scents</p>
+
+                        <div class="wrap">
+                            <span>FLEUR</span>
+                            <span>MUSC</span>
+                            <span>WOODY</span>
+                            <span>CITRUS</span>
+                        </div>
+                    </a><!-- .bd end -->
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div><!-- .scent_slide end -->
+
+            </div>
+        </section><!-- .scent end -->
+
+        <!-- text_slide -->
+        <section class="hot">
+            <div class="text_slide">
+                <p>TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE
+                    DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT
+                    STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS
+                    HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN
+                    TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE
+                    DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT
+                    STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS
+                    HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN TAMBURINS HOT STORE DOSAN
+                </p>
+            </div><!-- .text_slide end -->
+
+        </section><!-- .hot end -->
+
+
+        <!-- dosan -->
+        <section class="dosan">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+                <div class="dosan_img">
+                    <img src="img/hot_store_dosan.jpg" alt="store">
+
+                    <div class="dosan_text">
+                        <h2>HAUS DOSAN</h2>
+                    </div><!-- .dosan_text end -->
+
+                    <div>
+                        <a href="https://www.tamburins.com/store/index.php?code=kr">VIEW MORE</a>
+                    </div>
+                </div><!-- .dosan_img end -->
+
+            </div><!-- .inner end -->
+
+        </section><!-- .dosan end -->
+
+
+        <!-- insta -->
+        <section class="insta">
+            <div class="inner" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1500">
+
+                <div class="title">
+                    <h3>Instagram </h3>
+                    <h5>@tamburinsofficial</h5>
+                </div><!-- .title end -->
+
+                <div class="list">
+
+                    <div class="item">
+                        <a href="https://www.instagram.com/tamburinsofficial/">
+                            <figure>
+                                <img class="nomal" src="img/insta_rev_posy.jpg" alt="posy">
+                                <img class="hover" src="img/bs_shell_hover.jpg" alt="posy_상품컷">
+                            </figure>
+
+                            <div class="insta_text">
+                                <h5>PERFUME HAND</h5>
+                                <strong>POSY</strong>
+                                <P>제가 좋아하는 POSY향을 담은 퍼퓸로션이라 좋아요~! 선물받았지만 다 쓰면 다른것도 쓰고 싶구, 향수 라인도 궁금해지는 ㅎㅎㅎㅎ
+                                </P>
+                                <span>@vio_let_tt</span>
+                            </div><!-- .insta_text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.instagram.com/tamburinsofficial/">
+                            <figure>
+                                <img class="nomal" src="img/insta_rev_perfume_camo.jpg" alt="CHAMO">
+                                <img class="hover" src="img/bs_perfume_chamo_50ml.jpg" alt="CHAMO상품컷">
+                            </figure>
+
+                            <div class="insta_text">
+                                <h5>PERFUME</h5>
+                                <strong>CHAMO</strong>
+                                <P>카모마일과 세이지의 조화로 머스키한 향의 느낌으로
+                                    지금같은 가을겨울에 사용하기 좋음 :) 그리고 흔하지 않은 향기라 더 좋은 점은 안비밀..!
+                                </P>
+                                <span>@blah__inin</span>
+                            </div><!-- .insta_text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="https://www.instagram.com/tamburinsofficial/">
+                            <figure>
+                                <img class="nomal" src="img/insta_rev_tube_hand.jpg" alt="tube_hand">
+                                <img class="hover" src="img/bs_chain_7_65mL.jpg" alt="tube_hand">
+                            </figure>
+
+                            <div class="insta_text">
+                                <h5>TUBE HAND</h5>
+                                <strong>7</strong>
+                                <P>첫 향은 코코넛인데 시간이 지나면 로즈우드랑 섞이면서 잔향이 너무 좋아요. 시간이 지나면 더
+                                    진가를 보여주는 향이에요.
+                                </P>
+                                <span>@osniiiiii_tam</span>
+                            </div><!-- .insta_text end -->
+                        </a>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <a href="https://www.instagram.com/tamburinsofficial/">
+                            <figure>
+                                <img class="nomal" src="img/insta_rev_body.jpg" alt="BODY">
+                                <img class="hover" src="img/bs_shwry_wash_biga_470mL.jpg" alt="BODY">
+                            </figure>
+
+                            <div class="insta_text">
+                                <h5>SHOWERY BODYWASH</h5>
+                                <strong>BIGALICO</strong>
+                                <P>우디하면서 시트러스한 향이 은은하게 남고
+                                    허브같은 향도 나서 마음이 편안해지는 느낌~! 지속력도 좋고 재구매할 것 같아요.
+                                </P>
+                                <span>@hsawww_mbur</span>
+                            </div><!-- .insta_text end -->
+                        </a>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+            </div><!-- .inner end -->
+
+        </section><!-- .insta end -->
+
+
+    </main>
+
+    <div class="login">
+
+        <div class="menu_close">
+            <a href="#">
+                <img src="img/icon/menu_close_icon_50 (2).png" alt="닫기버튼">
+            </a>
+        </div><!-- .menu_close end -->
+
+        <form action="" method="post">
+
+            <h3 class="title">TAMBURINS LOGIN</h3>
+
+            <fieldset>
+                <legend>개인정보입력</legend>
+
+                <div class="box">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" placeholder="아이디 입력.">
+                </div><!-- 이름기입 -->
+
+                <div class="box">
+                    <label for="name">비밀번호</label>
+                    <input type="password" id="pass" placeholder="비밀번호 입력.">
+                </div><!-- 비밀번호 기입 -->
+
+                <div class="box">
+                    <label for="">LOGIN</label>
+                    <input type="button" value="LOGIN">
+                </div><!-- LOGIN-->
+
+
+                <div>
+                    <input type="radio" id="web1" name="web" value="html" checked />
+                    <label for="web1">아이디 저장</label>
+
+                    <input type="radio" id="web2" name="web" value="css" checked />
+                    <label for="web2">비밀번호 저장</label>
+                </div>
+
+            </fieldset>
+
+
+            <!-- etc_login -->
+            <div class="etc_login">
+
+                <div class="item">
+                    <a href="#">
+                        <img src="img/icon/btn_login_mobile.png" alt="btn_login">
+                    </a>
+
+                    <div class="sns_login">
+                        <span>휴대폰<br>로그인</span>
+                    </div><!-- .sns_login -->
+
+                </div><!-- .item end -->
+
+                <div class="item">
+                    <a href="#">
+                        <img src="img/icon/btn_login_ka.png" alt="btn_login">
+                    </a>
+                    <span class="text">카카오<br>로그인</span>
+                </div><!-- .item end -->
+
+                <div class="item">
+                    <a href="#">
+                        <img src="img/icon/btn_login_na.png" alt="btn_login">
+                    </a>
+                    <span class="text">네이버<br>로그인</span>
+                </div><!-- .item end -->
+
+                <div class="item">
+                    <a href="#">
+                        <img src="img/icon/btn_login_more.png" alt="btn_login">
+                    </a>
+                    <span class="text">더보기</span>
+                </div><!-- .item end -->
+
+            </div><!-- .etc_login end -->
+
+
+            <div class="find_login">
+
+                <a href="#">
+                    아이디 찾기
+                </a>
+
+                <a href="#">
+                    비밀번호 찾기
+                </a>
+
+            </div><!-- .find_login end -->
+
+            <div class="yet">
+                <span>아직 회원이 아니세요?</span>
+                <p>회원가입</p>
+            </div><!-- .yet end -->
+
+        </form>
+    </div><!-- .login end -->
+
+    <!-- top버튼 -->
+    <div class="top">
+        Top
+    </div><!-- .top end -->
+
+
+    <footer>
+        <div class="inner">
+
+            <div class="footer_logo">
+                <a href="#">
+                    <img src="img/logo_wh.png" alt="logo">
+                </a>
+            </div><!-- .footer_logo end -->
+
+            <div class="footer_add">
+                <ul class="address">
+                    <li>
+                        <strong>㈜ 아이아이컴바인드</strong>
+                    </li>
+                    <li>CEO : 김한국</li>
+                    <li>서울특별시 마포구 어울마당로5길 41 </li>
+                    <li>대표번호: 1644-1246</li>
+                    <li>이메일: cs@tamburins.com</li>
+                    <li>사업자등록번호: 119-86-38589</li>
+                    <li>개인정보 보호 책임자: 정태호</li>
+                    <li>통신판매업신고: 제 2014-서울마포-1050 호 (사업자정보확인)</li>
+                </ul><!-- .address end -->
+            </div><!-- .footer_info end -->
+
+
+            <div class="serv">
+                <ul class="service">
+                    <li>
+                        <strong>고객센터</strong>
+                    </li>
+                    <li>공지사항</li>
+                    <li>주문 배송 조회</li>
+                    <li>적립금 현황</li>
+                    <li>고객서비스</li>
+
+                    <div class="service_box">
+                        <a href="https://www.tamburins.com/account/contact.php">1 : 1 문의하기</a>
+                    </div><!-- .service_box end -->
+
+                </ul><!-- .service end -->
+            </div><!-- .serv end -->
+
+            <div class="ft_menu">
+                <ul class="footer_menu">
+                    <li>자주묻는질문</li>
+                    <li>이용약관</li>
+                    <li>개인정보처리방침</li>
+                    <li>© 탬버린즈 대한민국</li>
+                </ul><!-- .footer_menu end -->
+            </div><!-- ft_menu -->
+
+            <div class="footer_icon">
+                <ul class="sns">
+                    <li>
+                        <a href="https://www.instagram.com/tamburinsofficial/">
+                            <img src="img/icon/footer-instagram-logo-48.png" alt="insta">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://weibo.com/tamburinsofficial">
+                            <img src="img/icon/footer_weibo-48.png" alt="웨이보">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://pf.kakao.com/_RkqIj">
+                            <img src="img/icon/footer_kakao-48.png" alt="kakao">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.facebook.com/tamburinsofficial/">
+                            <img src="img/icon/footer_페이스-북_wh_50.png" alt="fb">
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.youtube.com/@tamburins1613">
+                            <img src="img/icon/footer_youtube-50.png" alt="youtube">
+                        </a>
+                    </li>
+                </ul><!-- .sns end -->
+            </div><!-- .footer_icon end -->
+
+        </div><!-- .inner end -->
+    </footer>
+
+
+
+</body>
+
+
+</html>
